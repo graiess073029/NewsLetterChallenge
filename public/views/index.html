@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="../styles/style.css">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+</head>
+<body>
+  <main class="root">
+    <div class="root_inner">
+      <form action="/thank.html" method="post">
+        <section class="form">
+          <div class="header gap">
+            <header class="description">
+              <h1>Stay updated!</h1>
+              <p>Join 60,000+ product managers receiving monthly updates on:</p>
+            </header>
+            <ul class="features">
+              <li><img src="../assets/images/icon-success.svg" alt=""><p>Product discovery and building what matters</p></li>
+              <li><img src="../assets/images/icon-success.svg" alt=""><p>Measuring to ensure updates are a success</p></li>
+              <li><img src="../assets/images/icon-success.svg" alt=""><p>And much more!</p></li>
+            </ul>
+          </div>
+          <div class="input">
+            <div><label for="">Email address</label><label for="" class="error">Valid email required</label></div>
+            <input name="email" type="text" placeholder="email@company.com">
+          </div>
+          <button type="button">Subscribe to monthly newsletter</button>
+        </section>
+        <img src="../assets/images/illustration-sign-up-desktop.svg" style="display: none;" alt="" class="desktop">
+        <img src="../assets/images/illustration-sign-up-mobile.svg" style="display: none;" alt="" class="mobile">
+      </form>
+    </div>
+  </main>
+  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+  <script>
+    window.innerWidth <= 768 ? document.getElementsByClassName("mobile")[0].style.display = "block" : document.getElementsByClassName("desktop")[0].style.display = "block"
+
+    document.getElementsByTagName("button")[0].addEventListener("click" , (event) =>{
+      if(!validator.isEmail(document.getElementsByTagName("input")[0].value)){
+        document.getElementsByClassName("error")[0].style.display = "block"
+        document.getElementsByTagName("input")[0].classList.add("invalid")
+      }
+
+      else{
+        document.getElementsByClassName("error")[0].style.display = "none"
+        document.getElementsByTagName("input")[0].placeholder = "ash#loremcompany.com"
+        document.getElementsByTagName("input")[0].classList.remove("invalid")
+        document.getElementsByTagName("form")[0].submit()
+      }
+    } )
+  </script>
+</body>
+</html>
