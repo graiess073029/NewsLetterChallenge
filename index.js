@@ -1,4 +1,5 @@
 const express = require('express')
+const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const path = require("path")
 const https = require("https")
@@ -19,14 +20,10 @@ app.post("/thank.html" , (req,res) => {
 app.use((req,res,next) => res.redirect("/index.html"))
 const server = https.createServer(
     {
-      key: fs.readFileSync("cert/private.key","utf8"),
-      cert: fs.readFileSync("cert/certificate.crt","utf8")
+      key: fs.readFileSync(path.join(__dirname + "/cert/private.key"),"utf8"),
+      cert: fs.readFileSync(path.join(__dirname +"/cert/certificate.crt"),"utf8")
     },
     app
 );
 
-server.listen(5000 , () => {
-console.log("------------------------------------------------------------------------------")
-console.log("Works Sucessfully !")
-console.log("------------------------------------------------------------------------------")
-})
+server.listen(process.env.PORT)
