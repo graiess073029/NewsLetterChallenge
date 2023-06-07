@@ -25,4 +25,8 @@ const server = https.createServer(
     app
 );
 
-server.listen(5000)
+server.listen(5000 , () => {
+console.log("------------------------------------------------------------------------------")
+console.log("Works Sucessfully !")
+console.log("------------------------------------------------------------------------------")
+})
